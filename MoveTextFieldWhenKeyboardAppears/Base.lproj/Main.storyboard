@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wls-gL-ReT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="RQV-YP-9Pq">
+            <objects>
+                <viewController id="wls-gL-ReT" customClass="ViewController" customModule="MoveTextFieldWhenKeyboardAppears" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NbD-21-XZC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nd9-Y2-dwb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RTM-ay-kPs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zD-NO-9KX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDW-oa-xsW">
+                                        <rect key="frame" x="94" y="385" width="187.5" height="30"/>
+                                        <color key="backgroundColor" white="0.90646701388888884" alpha="0.93188142123287676" colorSpace="calibratedWhite"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="wls-gL-ReT" id="tNQ-PJ-F5s"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qBw-xw-pAP">
+                                        <rect key="frame" x="38" y="585.5" width="300" height="30"/>
+                                        <color key="backgroundColor" white="0.90646701389999995" alpha="0.93188142119999995" colorSpace="calibratedWhite"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="wls-gL-ReT" id="VMT-kd-Zd4"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrg-23-Yhx">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
+                                        <string key="text">1)Pin UIScrollView to Top, right, left and bottom. 2) define UITextField delegate protocols so notifier in ViewDidLoad() gets notified when keyboard appears</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qBw-xw-pAP" firstAttribute="centerY" secondItem="5zD-NO-9KX" secondAttribute="centerY" multiplier="1.8" id="0Xy-jD-cZJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lrg-23-Yhx" secondAttribute="trailing" id="GcY-kB-qBW"/>
+                                    <constraint firstItem="Lrg-23-Yhx" firstAttribute="leading" secondItem="5zD-NO-9KX" secondAttribute="leading" id="LWL-T3-zAq"/>
+                                    <constraint firstAttribute="bottom" secondItem="qDW-oa-xsW" secondAttribute="bottom" constant="318.5" id="RIh-Zc-iJ5"/>
+                                    <constraint firstItem="qDW-oa-xsW" firstAttribute="width" secondItem="5zD-NO-9KX" secondAttribute="width" multiplier="0.5" id="Tb1-n6-Sbm"/>
+                                    <constraint firstItem="qBw-xw-pAP" firstAttribute="width" secondItem="5zD-NO-9KX" secondAttribute="width" multiplier="0.8" id="Tb4-tm-lZo"/>
+                                    <constraint firstItem="qDW-oa-xsW" firstAttribute="centerX" secondItem="5zD-NO-9KX" secondAttribute="centerX" id="b11-I5-l8F"/>
+                                    <constraint firstAttribute="trailing" secondItem="qDW-oa-xsW" secondAttribute="trailing" constant="93.5" id="d9x-jh-yND"/>
+                                    <constraint firstItem="Lrg-23-Yhx" firstAttribute="height" secondItem="5zD-NO-9KX" secondAttribute="height" multiplier="0.4" id="dV9-Hb-3tO"/>
+                                    <constraint firstItem="Lrg-23-Yhx" firstAttribute="top" secondItem="5zD-NO-9KX" secondAttribute="top" id="dlU-OR-vw3"/>
+                                    <constraint firstItem="qDW-oa-xsW" firstAttribute="centerY" secondItem="5zD-NO-9KX" secondAttribute="centerY" multiplier="1.2" id="hBZ-Q5-BUw"/>
+                                    <constraint firstItem="qBw-xw-pAP" firstAttribute="centerX" secondItem="5zD-NO-9KX" secondAttribute="centerX" id="z32-dw-BQZ"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5zD-NO-9KX" secondAttribute="trailing" id="RKF-iR-44Y"/>
+                            <constraint firstItem="5zD-NO-9KX" firstAttribute="top" secondItem="RTM-ay-kPs" secondAttribute="top" id="Vik-Eq-9Ho"/>
+                            <constraint firstItem="Nd9-Y2-dwb" firstAttribute="top" secondItem="5zD-NO-9KX" secondAttribute="bottom" id="Zbz-Ik-fWN"/>
+                            <constraint firstItem="5zD-NO-9KX" firstAttribute="leading" secondItem="RTM-ay-kPs" secondAttribute="leading" id="xkZ-is-N5Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="5zD-NO-9KX" id="m4R-zO-yom"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKW-0B-9mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2788" y="846.9265367316342"/>
+        </scene>
+    </scenes>
+</document>
