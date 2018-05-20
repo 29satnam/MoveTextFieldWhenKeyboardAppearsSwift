@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         activeTextField = nil
     }
     // when show keyboard increase height of scroll view
-    func keyboardWasShown(notification: NSNotification)
+    @objc func keyboardWasShown(notification: NSNotification)
     {
         var info = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     // when keyboard hide reduce height of scroll view
-    func keyboardWillBeHidden(notification: NSNotification){
+    @objc func keyboardWillBeHidden(notification: NSNotification){
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0,0.0, 0.0)
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
