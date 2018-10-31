@@ -1,5 +1,4 @@
 # MoveTextFieldWhenKeyboardAppearsSwift
-Move TextField When Keyboard Appears Swift 4.1 Contact: 29satnam@gmail.com 
 
 # Usage:
 1) Drop a UIScrollView to your Storyboard.
