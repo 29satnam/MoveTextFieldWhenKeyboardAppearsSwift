@@ -1,5 +1,5 @@
 
-# MoveTextFieldWhenKeyboardAppearsSwift
+# Move TextField when Keyboard Appears
 ## Updated to Swift 4.2
 
 - This Includes robust hack for keyboard dismiss.
