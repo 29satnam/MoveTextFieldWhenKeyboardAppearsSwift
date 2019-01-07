@@ -1,4 +1,9 @@
+
 # MoveTextFieldWhenKeyboardAppearsSwift
+## Updated to Swift 4.2
+
+- This Includes robust hack for keyboard dismiss.
+- And of course move the textfield up when keyboard appears. 
 
 # Usage:
 1) Drop a UIScrollView to your Storyboard.
