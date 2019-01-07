@@ -1,6 +1,7 @@
 
 # Move TextField when Keyboard Appears
 ## Updated to Swift 4.2
+### All native code and this isn't a pod.
 
 - This Includes robust hack for keyboard dismiss.
 - And of course move the textfield up when keyboard appears. 
