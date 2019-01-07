@@ -8,55 +8,50 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    //  get current text box when user Begin editing
-    @IBOutlet weak var activeTextField: UITextField? //deliberately left and is optional
     
     override func viewWillAppear(_ animated: Bool) {
         // call method for keyboard notification
         self.setNotificationKeyboard()
+        scrollView.delegate = self
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        
     }
     
-    // Notification when keyboard show
-    func setNotificationKeyboard ()  {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    // get current text field
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField;
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        activeTextField = nil
-    }
-    // when show keyboard increase height of scroll view
-    @objc func keyboardWasShown(notification: NSNotification)
-    {
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height+10, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardSize!.height
-        if let activeField = self.activeTextField
-        {
-            if (!aRect.contains(activeField.frame.origin))
-            {
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
         }
     }
-    // when keyboard hide reduce height of scroll view
-    @objc func keyboardWillBeHidden(notification: NSNotification){
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0,0.0, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
+    // Notification when keyboard show
+    func setNotificationKeyboard ()  {
+        // setup keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView
+            .contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
